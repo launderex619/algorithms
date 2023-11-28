@@ -1,5 +1,14 @@
+/**
+ * O( Log N )
+ */
+
 export class BinarySearch {
   public static search(array: number[], searchValue: number): number | null {
+    // We cannot iterate over an empty array so:
+    if (array.length === 0) {
+      return null;
+    }
+
     // first, we stablish the lower and upper bound of where the value
     // we're searching for can be. To start, the lower bound is the first
     // value in the array, while the upper bound is the last value
@@ -14,7 +23,7 @@ export class BinarySearch {
 
     while (lowerBound <= upperBound) {
       // We find the midpoint between the upper and lower bounds
-      midpoint = (upperBound + lowerBound) / 2;
+      midpoint = Math.floor((upperBound + lowerBound) / 2);
 
       // We inspect value at the value_at_midpoint
       valueAtMidpoint = array[midpoint];
@@ -34,7 +43,6 @@ export class BinarySearch {
 
     // if we've narrowed the bounds until they've reached each other, that
     // means that the value we're searching for is not contained within this array
-
     return null;
   }
 }
